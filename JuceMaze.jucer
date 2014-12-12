@@ -5,6 +5,16 @@
               jucerVersion="3.1.0" companyEmail="ldjsnape@gmail.com" companyName="Luke Snape">
   <MAINGROUP id="ch3GHW" name="JuceMaze">
     <GROUP id="{D59D6866-346A-A74F-C1D7-D7561846611A}" name="Source">
+      <GROUP id="{69BBFA4F-3442-6280-0A31-F6E624DC2971}" name="Conn">
+        <FILE id="nO6ser" name="PlayerConnection.cpp" compile="1" resource="0"
+              file="Source/PlayerConnection.cpp"/>
+        <FILE id="asujeh" name="PlayerConnection.h" compile="0" resource="0"
+              file="Source/PlayerConnection.h"/>
+        <FILE id="MIJFkE" name="PlayerConnectionServer.cpp" compile="1" resource="0"
+              file="Source/PlayerConnectionServer.cpp"/>
+        <FILE id="JQxpQ1" name="PlayerConnectionServer.h" compile="0" resource="0"
+              file="Source/PlayerConnectionServer.h"/>
+      </GROUP>
       <FILE id="gwx2gq" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
       <FILE id="DyVxVt" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
