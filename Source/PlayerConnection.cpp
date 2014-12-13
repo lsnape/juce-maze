@@ -34,3 +34,9 @@ void PlayerConnection::messageReceived (const MemoryBlock& message)
 {
     std::cout << "Message Received!\n";
 }
+
+void PlayerConnection::sendStringMessage(const String& message)
+{
+    MemoryBlock memoryBlock (message.toRawUTF8(), message.toUTF8().sizeInBytes());
+    sendMessage (memoryBlock);
+}

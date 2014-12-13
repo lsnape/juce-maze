@@ -22,8 +22,9 @@ public:
 private:
     void connectionMade();
     void connectionLost();
-    
     void messageReceived (const MemoryBlock& message);
+    
+    void sendStringMessage(const String& message);
 };
 
 #endif  // PLAYERCONNECTION_H_INCLUDED
