@@ -23,6 +23,7 @@ PlayerConnection::~PlayerConnection()
 void PlayerConnection::connectionMade()
 {
     std::cout << "Connection Made!\n";
+    sendStringMessage("Welcome! Please enter your name:\n");
 }
 
 void PlayerConnection::connectionLost()
