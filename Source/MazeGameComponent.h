@@ -71,6 +71,7 @@ private:
     //==============================================================================
     ScopedPointer<GroupComponent> playerListGroup;
     ScopedPointer<ListBox> playerNameList;
+    ScopedPointer<MazeComponent> mazeComponent;
 
 
     //==============================================================================

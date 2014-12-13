@@ -37,6 +37,9 @@ MazeGameComponent::MazeGameComponent ()
     addAndMakeVisible (playerNameList = new ListBox());
     playerNameList->setName ("Player Name List");
 
+    addAndMakeVisible (mazeComponent = new MazeComponent());
+    mazeComponent->setName ("Maze Component");
+
 
     //[UserPreSize]
     connectionServer.setListener (&gameEngine);
@@ -58,6 +61,7 @@ MazeGameComponent::~MazeGameComponent()
 
     playerListGroup = nullptr;
     playerNameList = nullptr;
+    mazeComponent = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -81,8 +85,9 @@ void MazeGameComponent::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    playerListGroup->setBounds (proportionOfWidth (0.6000f), proportionOfHeight (0.0200f), proportionOfWidth (0.3800f), proportionOfHeight (0.9600f));
-    playerNameList->setBounds (proportionOfWidth (0.6000f) + roundFloatToInt (proportionOfWidth (0.3800f) * 0.0493f), proportionOfHeight (0.0600f), roundFloatToInt (proportionOfWidth (0.3800f) * 0.9013f), proportionOfHeight (0.8900f));
+    playerListGroup->setBounds (proportionOfWidth (0.6002f), proportionOfHeight (0.0204f), proportionOfWidth (0.3800f), proportionOfHeight (0.9601f));
+    playerNameList->setBounds (proportionOfWidth (0.6002f) + roundFloatToInt (proportionOfWidth (0.3800f) * 0.0495f), proportionOfHeight (0.0603f), roundFloatToInt (proportionOfWidth (0.3800f) * 0.9011f), proportionOfHeight (0.8896f));
+    mazeComponent->setBounds (proportionOfWidth (0.0150f), proportionOfHeight (0.0400f), 460, 460);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -93,7 +98,7 @@ void MazeGameComponent::resized()
 void MazeGameComponent::playerCreated (const Player& newPlayer)
 {
     std::cout << "Player Created: " << newPlayer.name.toRawUTF8() << '\n';
-    
+
     playerNameList->updateContent();
 }
 
@@ -108,7 +113,7 @@ void MazeGameComponent::paintListBoxItem (int rowNumber,
                                           bool rowIsSelected)
 {
     g.setColour(Colours::blue);
-    
+
     static const int padding = 5;
     g.drawText (gameEngine.getPlayerAtIndex (rowNumber).name,
                 padding, padding,
@@ -133,12 +138,15 @@ BEGIN_JUCER_METADATA
                  initialHeight="600">
   <BACKGROUND backgroundColour="ff2e2e2e"/>
   <GROUPCOMPONENT name="players" id="79f879264b5ffa27" memberName="playerListGroup"
-                  virtualName="" explicitFocusOrder="0" pos="60.021% 2.037% 37.996% 96.01%"
-                  outlinecol="66dfdfdf" textcol="ffbebcbc" title="Players"/>
+                  virtualName="" explicitFocusOrder="0" pos="60% 2% 38% 96%" outlinecol="66dfdfdf"
+                  textcol="ffbebcbc" title="Players"/>
   <GENERICCOMPONENT name="Player Name List" id="8fc82d1c512e5862" memberName="playerNameList"
-                    virtualName="" explicitFocusOrder="0" pos="4.945% 6.027% 90.11% 88.964%"
+                    virtualName="" explicitFocusOrder="0" pos="4.934% 6% 90.132% 89%"
                     posRelativeX="79f879264b5ffa27" posRelativeW="79f879264b5ffa27"
                     class="ListBox" params=""/>
+  <GENERICCOMPONENT name="Maze Component" id="b10a398557cac1f6" memberName="mazeComponent"
+                    virtualName="" explicitFocusOrder="0" pos="1.5% 4% 460 460" class="MazeComponent"
+                    params=""/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
