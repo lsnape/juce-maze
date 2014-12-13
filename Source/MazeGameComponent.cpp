@@ -29,10 +29,13 @@
 //==============================================================================
 MazeGameComponent::MazeGameComponent ()
 {
-    addAndMakeVisible (playerListComponent = new GroupComponent ("players",
-                                                                 TRANS("Players")));
-    playerListComponent->setColour (GroupComponent::outlineColourId, Colour (0x66dfdfdf));
-    playerListComponent->setColour (GroupComponent::textColourId, Colour (0xffbebcbc));
+    addAndMakeVisible (playerListGroup = new GroupComponent ("players",
+                                                             TRANS("Players")));
+    playerListGroup->setColour (GroupComponent::outlineColourId, Colour (0x66dfdfdf));
+    playerListGroup->setColour (GroupComponent::textColourId, Colour (0xffbebcbc));
+
+    addAndMakeVisible (playerNameList = new ListBox());
+    playerNameList->setName ("Player Name List");
 
 
     //[UserPreSize]
@@ -42,6 +45,7 @@ MazeGameComponent::MazeGameComponent ()
 
 
     //[Constructor] You can add your own custom stuff here..
+    playerNameList->setModel (this);
     //[/Constructor]
 }
 
@@ -50,7 +54,8 @@ MazeGameComponent::~MazeGameComponent()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
-    playerListComponent = nullptr;
+    playerListGroup = nullptr;
+    playerNameList = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -74,7 +79,8 @@ void MazeGameComponent::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    playerListComponent->setBounds (proportionOfWidth (0.6000f), proportionOfHeight (0.0200f), proportionOfWidth (0.3800f), proportionOfHeight (0.9600f));
+    playerListGroup->setBounds (proportionOfWidth (0.6000f), proportionOfHeight (0.0200f), proportionOfWidth (0.3800f), proportionOfHeight (0.9600f));
+    playerNameList->setBounds (proportionOfWidth (0.6000f) + roundFloatToInt (proportionOfWidth (0.3800f) * 0.0493f), proportionOfHeight (0.0600f), roundFloatToInt (proportionOfWidth (0.3800f) * 0.9013f), proportionOfHeight (0.8900f));
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -85,6 +91,27 @@ void MazeGameComponent::resized()
 void MazeGameComponent::playerCreated (const Player& newPlayer)
 {
     std::cout << "Player Created!" << newPlayer.name.toRawUTF8() << '\n';
+    
+    playerNames.add (newPlayer.name);
+    playerNameList->updateContent();
+}
+
+int MazeGameComponent::getNumRows()
+{
+    return playerNames.size();
+}
+
+void MazeGameComponent::paintListBoxItem (int rowNumber,
+                                          Graphics& g,
+                                          int width, int height,
+                                          bool rowIsSelected)
+{
+    g.setColour(Colours::blue);
+    
+    static const int padding = 5;
+    g.drawText (playerNames [rowNumber],
+                padding, padding,
+                width - (2 * padding), height - (2 * padding), Justification::left);
 }
 //[/MiscUserCode]
 
@@ -99,13 +126,18 @@ void MazeGameComponent::playerCreated (const Player& newPlayer)
 BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="MazeGameComponent" componentName=""
-                 parentClasses="public Component, public MazeGameListener" constructorParams=""
-                 variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
-                 overlayOpacity="0.330" fixedSize="1" initialWidth="800" initialHeight="600">
+                 parentClasses="public Component, public MazeGameListener, public ListBoxModel"
+                 constructorParams="" variableInitialisers="" snapPixels="8" snapActive="1"
+                 snapShown="1" overlayOpacity="0.330" fixedSize="1" initialWidth="800"
+                 initialHeight="600">
   <BACKGROUND backgroundColour="ff2e2e2e"/>
-  <GROUPCOMPONENT name="players" id="79f879264b5ffa27" memberName="playerListComponent"
-                  virtualName="" explicitFocusOrder="0" pos="60% 2% 38% 96%" outlinecol="66dfdfdf"
-                  textcol="ffbebcbc" title="Players"/>
+  <GROUPCOMPONENT name="players" id="79f879264b5ffa27" memberName="playerListGroup"
+                  virtualName="" explicitFocusOrder="0" pos="60.021% 2.037% 37.996% 96.01%"
+                  outlinecol="66dfdfdf" textcol="ffbebcbc" title="Players"/>
+  <GENERICCOMPONENT name="Player Name List" id="8fc82d1c512e5862" memberName="playerNameList"
+                    virtualName="" explicitFocusOrder="0" pos="4.945% 6.027% 90.11% 88.964%"
+                    posRelativeX="79f879264b5ffa27" posRelativeW="79f879264b5ffa27"
+                    class="ListBox" params=""/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
