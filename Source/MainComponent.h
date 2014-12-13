@@ -9,11 +9,8 @@
 #ifndef MAINCOMPONENT_H_INCLUDED
 #define MAINCOMPONENT_H_INCLUDED
 
-#include "../JuceLibraryCode/JuceHeader.h"
-
-#include "PlayerConnectionServer.h"
+#include "JuceHeader.h"
 #include "MazeGameComponent.h"
-#include "MazeGameEngine.h"
 
 //==============================================================================
 /*
@@ -33,9 +30,7 @@ public:
 private:
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)
-    
-    PlayerConnectionServer connectionServer;
-    MazeGameEngine gameEngine;
+
     MazeGameComponent gameComponent;
 };
 

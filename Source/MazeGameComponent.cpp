@@ -39,6 +39,8 @@ MazeGameComponent::MazeGameComponent ()
 
 
     //[UserPreSize]
+    connectionServer.setListener (&gameEngine);
+    gameEngine.setListener (this);
     //[/UserPreSize]
 
     setSize (800, 600);
@@ -90,15 +92,14 @@ void MazeGameComponent::resized()
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 void MazeGameComponent::playerCreated (const Player& newPlayer)
 {
-    std::cout << "Player Created!" << newPlayer.name.toRawUTF8() << '\n';
+    std::cout << "Player Created: " << newPlayer.name.toRawUTF8() << '\n';
     
-    playerNames.add (newPlayer.name);
     playerNameList->updateContent();
 }
 
 int MazeGameComponent::getNumRows()
 {
-    return playerNames.size();
+    return gameEngine.getNumPlayers();
 }
 
 void MazeGameComponent::paintListBoxItem (int rowNumber,
@@ -109,7 +110,7 @@ void MazeGameComponent::paintListBoxItem (int rowNumber,
     g.setColour(Colours::blue);
     
     static const int padding = 5;
-    g.drawText (playerNames [rowNumber],
+    g.drawText (gameEngine.getPlayerAtIndex (rowNumber).name,
                 padding, padding,
                 width - (2 * padding), height - (2 * padding), Justification::left);
 }

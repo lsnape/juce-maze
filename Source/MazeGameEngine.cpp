@@ -15,9 +15,9 @@ MazeGameEngine::MazeGameEngine() : listener (nullptr)
     
 }
 
-void MazeGameEngine::createPlayer (const String& playerName)
+void MazeGameEngine::createPlayer (const String& playerName) noexcept
 {
-    players[playerName] = Player (playerName);
+    players.add (Player (playerName));
     
     if (listener != nullptr)
     {
@@ -25,9 +25,19 @@ void MazeGameEngine::createPlayer (const String& playerName)
     }
 }
 
-void MazeGameEngine::removePlayer (const String& playerName)
+void MazeGameEngine::removePlayer (const String& playerName) noexcept
 {
-    players.remove(playerName);
+    // TODO - search for and remove player
+}
+
+const Player& MazeGameEngine::getPlayerAtIndex (int index) const noexcept
+{
+    return players.getReference(index);
+}
+
+int MazeGameEngine::getNumPlayers() const noexcept
+{
+    return players.size();
 }
 
 void MazeGameEngine::setListener (MazeGameListener* listener_)

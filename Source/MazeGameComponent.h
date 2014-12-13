@@ -22,8 +22,10 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "JuceHeader.h"
-#include "MazeGameEngine.h"
+
 #include "Player.h"
+#include "PlayerConnectionServer.h"
+#include "MazeGameEngine.h"
 //[/Headers]
 
 
@@ -62,7 +64,8 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-    Array<String> playerNames;
+    PlayerConnectionServer connectionServer;
+    MazeGameEngine gameEngine;
     //[/UserVariables]
 
     //==============================================================================

@@ -10,10 +10,7 @@
 
 //==============================================================================
 MainContentComponent::MainContentComponent()
-{
-    connectionServer.setListener (&gameEngine);
-    gameEngine.setListener (&gameComponent);
-    
+{    
     addAndMakeVisible (&gameComponent);
     setSize (800, 600);
 }

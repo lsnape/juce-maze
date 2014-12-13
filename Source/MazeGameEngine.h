@@ -31,13 +31,16 @@ public:
     MazeGameEngine();
     virtual ~MazeGameEngine() {}
 
-    void createPlayer (const String& playerName);
-    void removePlayer (const String& playerName);
+    void createPlayer (const String& playerName) noexcept;
+    void removePlayer (const String& playerName) noexcept;
+    
+    const Player& getPlayerAtIndex (int index) const noexcept;
+    int getNumPlayers() const noexcept;
     
     void setListener (MazeGameListener* listener);
     
 private:
-    HashMap<String, Player> players;
+    Array<Player> players;
     MazeGameListener* listener;
 };
 
