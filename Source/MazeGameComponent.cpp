@@ -37,7 +37,7 @@ MazeGameComponent::MazeGameComponent ()
     addAndMakeVisible (playerNameList = new ListBox());
     playerNameList->setName ("Player Name List");
 
-    addAndMakeVisible (mazeComponent = new MazeComponent());
+    addAndMakeVisible (mazeComponent = new Component());
     mazeComponent->setName ("Maze Component");
 
 
@@ -85,8 +85,8 @@ void MazeGameComponent::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    playerListGroup->setBounds (proportionOfWidth (0.6002f), proportionOfHeight (0.0204f), proportionOfWidth (0.3800f), proportionOfHeight (0.9601f));
-    playerNameList->setBounds (proportionOfWidth (0.6002f) + roundFloatToInt (proportionOfWidth (0.3800f) * 0.0495f), proportionOfHeight (0.0603f), roundFloatToInt (proportionOfWidth (0.3800f) * 0.9011f), proportionOfHeight (0.8896f));
+    playerListGroup->setBounds (proportionOfWidth (0.6000f), proportionOfHeight (0.0200f), proportionOfWidth (0.3800f), proportionOfHeight (0.9600f));
+    playerNameList->setBounds (proportionOfWidth (0.6000f) + roundFloatToInt (proportionOfWidth (0.3800f) * 0.0493f), proportionOfHeight (0.0600f), roundFloatToInt (proportionOfWidth (0.3800f) * 0.9013f), proportionOfHeight (0.8900f));
     mazeComponent->setBounds (proportionOfWidth (0.0150f), proportionOfHeight (0.0400f), 460, 460);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
@@ -145,7 +145,7 @@ BEGIN_JUCER_METADATA
                     posRelativeX="79f879264b5ffa27" posRelativeW="79f879264b5ffa27"
                     class="ListBox" params=""/>
   <GENERICCOMPONENT name="Maze Component" id="b10a398557cac1f6" memberName="mazeComponent"
-                    virtualName="" explicitFocusOrder="0" pos="1.5% 4% 460 460" class="MazeComponent"
+                    virtualName="" explicitFocusOrder="0" pos="1.5% 4% 460 460" class="Component"
                     params=""/>
 </JUCER_COMPONENT>
 
