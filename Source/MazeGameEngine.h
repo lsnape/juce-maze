@@ -37,11 +37,28 @@ public:
     const Player& getPlayerAtIndex (int index) const noexcept;
     int getNumPlayers() const noexcept;
     
+    void generateMaze (int numberOfCellsX, int numberOfCellsY) const noexcept;
+    
     void setListener (MazeGameListener* listener);
     
 private:
-    Array<Player> players;
+    Array <Player> players;
     MazeGameListener* listener;
+
+    typedef Point <int> Cell;
+    
+    struct Edge
+    {
+        Edge (Cell cell1_, Cell cell2_) : cell1(cell1_), cell2(cell2_)
+        {
+        }
+        
+        Cell cell1;
+        Cell cell2;
+    };
+    
+    static void insertIncidentEdges (Array <Edge>& edges, const Cell& cell,
+                                     int numberOfCellsX, int numberOfCellsY) noexcept;
 };
 
 #endif  // MAZEGAMEENGINE_H_INCLUDED
