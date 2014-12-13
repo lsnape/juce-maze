@@ -11,7 +11,7 @@
 #include "PlayerConnectionServer.h"
 #include "PlayerConnection.h"
 
-PlayerConnectionServer::PlayerConnectionServer() noexcept
+PlayerConnectionServer::PlayerConnectionServer() noexcept : listener(nullptr)
 {
     std::cout << "Starting server on port:" << portNumber << '\n';
     beginWaitingForSocket (portNumber);
@@ -24,5 +24,10 @@ PlayerConnectionServer::~PlayerConnectionServer()
 
 InterprocessConnection* PlayerConnectionServer::createConnectionObject()
 {
-    return new PlayerConnection();
+    return new PlayerConnection (listener);
+}
+
+void PlayerConnectionServer::setListener(PlayerConnectionListener* listener_)
+{
+    listener = listener_;
 }

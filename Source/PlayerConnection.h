@@ -12,19 +12,22 @@
 #define PLAYERCONNECTION_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "PlayerConnectionListener.h"
 
 class PlayerConnection : public InterprocessConnection
 {
 public:
-    PlayerConnection();
+    PlayerConnection (PlayerConnectionListener* listener);
     ~PlayerConnection();
+
+    void sendStringMessage (const String& message);
     
 private:
     void connectionMade();
     void connectionLost();
     void messageReceived (const MemoryBlock& message);
-    
-    void sendStringMessage(const String& message);
+
+    PlayerConnectionListener* listener;
 };
 
 #endif  // PLAYERCONNECTION_H_INCLUDED

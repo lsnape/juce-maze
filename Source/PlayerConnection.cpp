@@ -10,9 +10,8 @@
 
 #include "PlayerConnection.h"
 
-PlayerConnection::PlayerConnection()
+PlayerConnection::PlayerConnection (PlayerConnectionListener* listener_) : listener (listener_)
 {
-    
 }
 
 PlayerConnection::~PlayerConnection()
@@ -23,7 +22,7 @@ PlayerConnection::~PlayerConnection()
 void PlayerConnection::connectionMade()
 {
     std::cout << "Connection Made!\n";
-    sendStringMessage("Welcome! Please enter your name:\n");
+    sendStringMessage ("Welcome! Please enter your name:\n");
 }
 
 void PlayerConnection::connectionLost()
@@ -34,9 +33,14 @@ void PlayerConnection::connectionLost()
 void PlayerConnection::messageReceived (const MemoryBlock& message)
 {
     std::cout << "Message Received!\n";
+    
+    if (listener != nullptr)
+    {
+        listener->createPlayer (message.toString());
+    }
 }
 
-void PlayerConnection::sendStringMessage(const String& message)
+void PlayerConnection::sendStringMessage (const String& message)
 {
     MemoryBlock memoryBlock (message.toRawUTF8(), message.toUTF8().sizeInBytes());
     sendMessage (memoryBlock);
