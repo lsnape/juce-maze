@@ -23,6 +23,7 @@
 //[Headers]     -- You can add your own extra header files here --
 #include "JuceHeader.h"
 #include "MazeGameEngine.h"
+#include "Player.h"
 //[/Headers]
 
 
@@ -45,14 +46,12 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-    void playerCreated (const String& playerName, const Point<int> playerPosition);
+    void playerCreated (const Player& newPlayer);
     //[/UserMethods]
 
     void paint (Graphics& g);
     void resized();
-
-
-
+    
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
     //[/UserVariables]

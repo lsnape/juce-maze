@@ -18,6 +18,7 @@
               file="Source/PlayerConnectionServer.h"/>
       </GROUP>
       <GROUP id="{20DEFA3C-0D9E-3D93-8A79-70B13FD71246}" name="Game">
+        <FILE id="ug5cMN" name="Player.h" compile="0" resource="0" file="Source/Player.h"/>
         <FILE id="FCM0ab" name="MazeGameEngine.cpp" compile="1" resource="0"
               file="Source/MazeGameEngine.cpp"/>
         <FILE id="gkPiIt" name="MazeGameEngine.h" compile="0" resource="0"

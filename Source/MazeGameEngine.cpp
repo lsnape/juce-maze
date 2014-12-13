@@ -21,7 +21,7 @@ void MazeGameEngine::createPlayer (const String& playerName)
     
     if (listener != nullptr)
     {
-        listener->playerCreated (playerName, Point<int> (0, 0));
+        listener->playerCreated (playerName);
     }
 }
 

@@ -82,9 +82,9 @@ void MazeGameComponent::resized()
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
-void MazeGameComponent::playerCreated (const String& playerName, const Point<int> playerPosition)
+void MazeGameComponent::playerCreated (const Player& newPlayer)
 {
-    std::cout << "Player Created!" << playerName.toRawUTF8() << '\n';
+    std::cout << "Player Created!" << newPlayer.name.toRawUTF8() << '\n';
 }
 //[/MiscUserCode]
 

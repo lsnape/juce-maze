@@ -11,7 +11,8 @@
 #ifndef MAZEGAMEENGINE_H_INCLUDED
 #define MAZEGAMEENGINE_H_INCLUDED
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
+#include "Player.h"
 #include "PlayerConnectionListener.h"
 
 class MazeGameListener
@@ -21,7 +22,7 @@ public:
     {
     }
     
-    virtual void playerCreated (const String& playerName, const Point<int> playerPosition) = 0;
+    virtual void playerCreated (const Player& newPlayer) = 0;
 };
 
 class MazeGameEngine : public PlayerConnectionListener
@@ -36,25 +37,6 @@ public:
     void setListener (MazeGameListener* listener);
     
 private:
-    struct Player
-    {
-        Player()
-        {
-        }
-        
-        Player(const String& playerName) : name(playerName)
-        {
-        }
-        
-        Player& operator= (const Player& other) noexcept
-        {
-            this->name = other.name;
-            return *this;
-        }
-        
-        String name;
-    };
- 
     HashMap<String, Player> players;
     MazeGameListener* listener;
 };
