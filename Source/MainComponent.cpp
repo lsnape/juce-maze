@@ -8,11 +8,14 @@
 
 #include "MainComponent.h"
 
-
 //==============================================================================
 MainContentComponent::MainContentComponent()
 {
-    setSize (600, 400);
+    connectionServer.setListener (&gameEngine);
+    gameEngine.setListener (&gameComponent);
+    
+    addAndMakeVisible (&gameComponent);
+    setSize (800, 600);
 }
 
 MainContentComponent::~MainContentComponent()
@@ -25,7 +28,6 @@ void MainContentComponent::paint (Graphics& g)
 
     g.setFont (Font (16.0f));
     g.setColour (Colours::white);
-    g.drawText ("Hello World!", getLocalBounds(), Justification::centred, true);
 }
 
 void MainContentComponent::resized()
