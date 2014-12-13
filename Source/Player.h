@@ -19,7 +19,7 @@ struct Player
     {
     }
     
-    Player(const String& playerName) : name(playerName)
+    Player (const String& playerName) : name (playerName)
     {
     }
     
