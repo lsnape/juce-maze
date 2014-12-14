@@ -53,6 +53,12 @@ private:
         {
         }
         
+        bool operator== (const Edge& other) const noexcept
+        {
+            return (this->cell1 == other.cell1 &&
+                    this->cell2 == other.cell2);
+        }
+        
         Cell cell1;
         Cell cell2;
     };
