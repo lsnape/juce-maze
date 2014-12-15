@@ -37,7 +37,7 @@ public:
     const Player& getPlayerAtIndex (int index) const noexcept;
     int getNumPlayers() const noexcept;
     
-    void generateMaze (int numberOfCellsX, int numberOfCellsY) const noexcept;
+    void generateMaze (int numberOfCellsX, int numberOfCellsY) const;
     
     void setListener (MazeGameListener* listener);
     

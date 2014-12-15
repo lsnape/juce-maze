@@ -28,52 +28,46 @@ void MazeGameEngine::removePlayer (const String& playerName) noexcept
     // TODO - search for and remove player
 }
 
-void MazeGameEngine::insertIncidentEdges (Array <Edge>& edges, const Cell& cell,
-                                          int numberOfCellsX, int numberOfCellsY) noexcept
+
+int MazeGameEngine::indexOfArrayContainingCell (const Array <Array <Cell> >& cellSets, const Cell& cell) const noexcept
 {
-    static const int numAdjacentCells = 4;
+    int cellSetIndex = -1;
     
-    Cell adjacentCellsTemp [] =
+    for (int i = 0; i < cellSets.size(); ++i)
     {
-        cell.translated (-1, 0),
-        cell.translated (0, -1),
-        cell.translated (1, 0),
-        cell.translated (0, 1)
-    };
-    
-    Array <Cell> adjacentCells (adjacentCellsTemp, numAdjacentCells);
-    
-    for (auto& adjCell : adjacentCells)
-    {
-        if (adjCell.x >= 0 &&
-            adjCell.y >= 0 &&
-            adjCell.x < numberOfCellsX &&
-            adjCell.y < numberOfCellsY)
+        if (cellSets[i].contains (cell))
         {
-            edges.addIfNotAlreadyThere (Edge (cell, adjCell));
+            cellSetIndex = i;
+            break;
         }
     }
+    
+    return cellSetIndex;
 }
 
-void MazeGameEngine::generateMaze (int numberOfCellsX, int numberOfCellsY) const noexcept
+void MazeGameEngine::generateMaze (int numberOfCellsX, int numberOfCellsY) const
 {
-    Array<Edge> edges;
-    Array <Cell> cells;
+    Array <Edge> edges;
+    Array <Array <Cell> > cellSets;
     
     for (int i = 0; i < numberOfCellsX; ++i)
     {
         for (int j = 0; j < numberOfCellsY; ++j)
         {
-            // calculate all angles incident on each cell > 0
-            // and add them to the edges set
             Cell cell (i, j);
-            cells.add (cell);
+            Array <Cell> cellSet;
+            cellSet.add (cell);
+            cellSets.add (cellSet);
             
-            insertIncidentEdges (edges, cell, numberOfCellsX, numberOfCellsY);
+            if (i < (numberOfCellsX - 1))
+                edges.add (Edge (cell, cell.translated (1, 0)));
+                
+            if (j < (numberOfCellsY - 1))
+                edges.add (Edge (cell, cell.translated (0, 1)));
         }
     }
     
-    // for (auto& edge : edges)
+    std::random_shuffle (edges.begin(), edges.end());
     {
         // if cell 1 and cell 2 belong to the same set
     }
