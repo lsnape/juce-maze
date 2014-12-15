@@ -67,11 +67,24 @@ void MazeGameEngine::generateMaze (int numberOfCellsX, int numberOfCellsY) const
         }
     }
     
+    // Kruskal's randomised MST maze generation algorithm
+    // This is a slow, naieve implementation: union find data structure is needed here really
+    
     std::random_shuffle (edges.begin(), edges.end());
     
     for (auto& edge : edges)
     {
-        // TODO - maze gen algo
+        int cell1ArrayIndex = indexOfArrayContainingCell (cellArrays, edge.cell1),
+            cell2ArrayIndex = indexOfArrayContainingCell (cellArrays, edge.cell2);
+        
+        if (cell1ArrayIndex != cell2ArrayIndex)
+        {
+            Array <Cell>& cell1Array = cellArrays.getReference (cell1ArrayIndex);
+            const Array <Cell>& cell2Array = cellArrays[cell2ArrayIndex];
+            
+            cell1Array.addArray (cell2Array);
+            cellArrays.remove (cell2ArrayIndex);
+        }
     }
 }
 
