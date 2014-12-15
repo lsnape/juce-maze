@@ -29,35 +29,35 @@ void MazeGameEngine::removePlayer (const String& playerName) noexcept
 }
 
 
-int MazeGameEngine::indexOfArrayContainingCell (const Array <Array <Cell> >& cellSets, const Cell& cell) const noexcept
+int MazeGameEngine::indexOfArrayContainingCell (const Array <Array <Cell> >& cellArrays, const Cell& cell) const noexcept
 {
-    int cellSetIndex = -1;
+    int cellArrayIndex = -1;
     
-    for (int i = 0; i < cellSets.size(); ++i)
+    for (int i = 0; i < cellArrays.size(); ++i)
     {
-        if (cellSets[i].contains (cell))
+        if (cellArrays[i].contains (cell))
         {
-            cellSetIndex = i;
+            cellArrayIndex = i;
             break;
         }
     }
     
-    return cellSetIndex;
+    return cellArrayIndex;
 }
 
 void MazeGameEngine::generateMaze (int numberOfCellsX, int numberOfCellsY) const
 {
     Array <Edge> edges;
-    Array <Array <Cell> > cellSets;
+    Array <Array <Cell> > cellArrays;
     
     for (int i = 0; i < numberOfCellsX; ++i)
     {
         for (int j = 0; j < numberOfCellsY; ++j)
         {
             Cell cell (i, j);
-            Array <Cell> cellSet;
-            cellSet.add (cell);
-            cellSets.add (cellSet);
+            Array <Cell> cellArray;
+            cellArray.add (cell);
+            cellArrays.add (cellArray);
             
             if (i < (numberOfCellsX - 1))
                 edges.add (Edge (cell, cell.translated (1, 0)));
@@ -68,8 +68,10 @@ void MazeGameEngine::generateMaze (int numberOfCellsX, int numberOfCellsY) const
     }
     
     std::random_shuffle (edges.begin(), edges.end());
+    
+    for (auto& edge : edges)
     {
-        // if cell 1 and cell 2 belong to the same set
+        // TODO - maze gen algo
     }
 }
 

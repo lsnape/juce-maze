@@ -55,16 +55,15 @@ private:
         
         bool operator== (const Edge& other) const noexcept
         {
-            return (this->cell1 == other.cell1 &&
-                    this->cell2 == other.cell2);
+            return (cell1 == other.cell1 &&
+                    cell2 == other.cell2);
         }
         
         Cell cell1;
         Cell cell2;
     };
     
-    static void insertIncidentEdges (Array <Edge>& edges, const Cell& cell,
-                                     int numberOfCellsX, int numberOfCellsY) noexcept;
+    int indexOfArrayContainingCell (const Array <Array <Cell> >& cellSets, const Cell& cell) const noexcept;
 };
 
 #endif  // MAZEGAMEENGINE_H_INCLUDED
