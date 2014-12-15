@@ -12,7 +12,7 @@
 
 MazeGameEngine::MazeGameEngine() : listener (nullptr)
 {
-    
+    generateMaze (10, 10);
 }
 
 void MazeGameEngine::createPlayer (const String& playerName) noexcept
@@ -20,9 +20,7 @@ void MazeGameEngine::createPlayer (const String& playerName) noexcept
     players.add (Player (playerName));
     
     if (listener != nullptr)
-    {
         listener->playerCreated (playerName);
-    }
 }
 
 void MazeGameEngine::removePlayer (const String& playerName) noexcept
