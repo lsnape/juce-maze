@@ -25,9 +25,28 @@ public:
     virtual void playerCreated (const Player& newPlayer) = 0;
 };
 
+typedef Point <int> Cell;
+
+struct Edge
+{
+    Edge (Cell cell1_, Cell cell2_) : cell1(cell1_), cell2(cell2_)
+    {
+    }
+    
+    bool operator== (const Edge& other) const noexcept
+    {
+        return (cell1 == other.cell1 &&
+                cell2 == other.cell2);
+    }
+    
+    Cell cell1;
+    Cell cell2;
+};
+
 class MazeGameEngine : public PlayerConnectionListener
 {
 public:
+            
     MazeGameEngine();
     virtual ~MazeGameEngine() {}
 
@@ -37,33 +56,19 @@ public:
     const Player& getPlayerAtIndex (int index) const noexcept;
     int getNumPlayers() const noexcept;
     
-    void generateMaze (int numberOfCellsX, int numberOfCellsY) const;
+    void generateMaze (int numberOfCellsX, int numberOfCellsY);
+    const Array <Edge>& getEdges() const noexcept;
     
     void setListener (MazeGameListener* listener);
     
 private:
-    Array <Player> players;
-    MazeGameListener* listener;
-
-    typedef Point <int> Cell;
-    
-    struct Edge
-    {
-        Edge (Cell cell1_, Cell cell2_) : cell1(cell1_), cell2(cell2_)
-        {
-        }
-        
-        bool operator== (const Edge& other) const noexcept
-        {
-            return (cell1 == other.cell1 &&
-                    cell2 == other.cell2);
-        }
-        
-        Cell cell1;
-        Cell cell2;
-    };
     
     int indexOfArrayContainingCell (const Array <Array <Cell> >& cellSets, const Cell& cell) const noexcept;
+    
+    Array <Edge> edges;
+    Array <Player> players;
+    
+    MazeGameListener* listener;
 };
 
 #endif  // MAZEGAMEENGINE_H_INCLUDED

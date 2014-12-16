@@ -45,9 +45,8 @@ int MazeGameEngine::indexOfArrayContainingCell (const Array <Array <Cell> >& cel
     return cellArrayIndex;
 }
 
-void MazeGameEngine::generateMaze (int numberOfCellsX, int numberOfCellsY) const
+void MazeGameEngine::generateMaze (int numberOfCellsX, int numberOfCellsY)
 {
-    Array <Edge> edges;
     Array <Array <Cell> > cellArrays;
     
     for (int i = 0; i < numberOfCellsX; ++i)
@@ -96,6 +95,11 @@ const Player& MazeGameEngine::getPlayerAtIndex (int index) const noexcept
 int MazeGameEngine::getNumPlayers() const noexcept
 {
     return players.size();
+}
+
+const Array <Edge>& MazeGameEngine::getEdges() const noexcept
+{
+    return edges;
 }
 
 void MazeGameEngine::setListener (MazeGameListener* listener_)
