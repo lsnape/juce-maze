@@ -46,7 +46,6 @@ struct Edge
 class MazeGameEngine : public PlayerConnectionListener
 {
 public:
-            
     MazeGameEngine();
     virtual ~MazeGameEngine() {}
 

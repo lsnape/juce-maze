@@ -25,6 +25,9 @@
               file="Source/MazeGameEngine.h"/>
       </GROUP>
       <GROUP id="{8AA9F1E1-D731-2DB2-F5EC-300D608FEFC8}" name="View">
+        <FILE id="KFhkcQ" name="MazeComponent.cpp" compile="1" resource="0"
+              file="Source/MazeComponent.cpp"/>
+        <FILE id="VUBsQj" name="MazeComponent.h" compile="0" resource="0" file="Source/MazeComponent.h"/>
         <FILE id="Q5XopS" name="MazeGameComponent.cpp" compile="1" resource="0"
               file="Source/MazeGameComponent.cpp"/>
         <FILE id="QgjIPj" name="MazeGameComponent.h" compile="0" resource="0"

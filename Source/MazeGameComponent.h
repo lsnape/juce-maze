@@ -26,6 +26,7 @@
 #include "Player.h"
 #include "PlayerConnectionServer.h"
 #include "MazeGameEngine.h"
+#include "MazeComponent.h"
 //[/Headers]
 
 
@@ -71,7 +72,7 @@ private:
     //==============================================================================
     ScopedPointer<GroupComponent> playerListGroup;
     ScopedPointer<ListBox> playerNameList;
-    ScopedPointer<Component> mazeComponent;
+    ScopedPointer<MazeComponent> mazeComponent;
 
 
     //==============================================================================
