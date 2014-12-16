@@ -1,21 +1,21 @@
 /*
   ==============================================================================
 
-    MazeGameEngine.cpp
+    GameEngine.cpp
     Created: 13 Dec 2014 12:30:54pm
     Author:  Luke Snape
 
   ==============================================================================
 */
 
-#include "MazeGameEngine.h"
+#include "GameEngine.h"
 
-MazeGameEngine::MazeGameEngine() : mazeWidth(10), mazeHeight(10), listener (nullptr)
+GameEngine::GameEngine() : mazeWidth(10), mazeHeight(10), listener (nullptr)
 {
     generateMaze (mazeWidth, mazeHeight);
 }
 
-void MazeGameEngine::createPlayer (const String& playerName) noexcept
+void GameEngine::createPlayer (const String& playerName) noexcept
 {
     players.add (Player (playerName));
     
@@ -23,13 +23,13 @@ void MazeGameEngine::createPlayer (const String& playerName) noexcept
         listener->playerCreated (playerName);
 }
 
-void MazeGameEngine::removePlayer (const String& playerName) noexcept
+void GameEngine::removePlayer (const String& playerName) noexcept
 {
     // TODO - search for and remove player
 }
 
 
-int MazeGameEngine::indexOfArrayContainingCell (const Array <Array <Cell> >& cellArrays, const Cell& cell) const noexcept
+int GameEngine::indexOfArrayContainingCell (const Array <Array <Cell> >& cellArrays, const Cell& cell) const noexcept
 {
     int cellArrayIndex = -1;
     
@@ -45,17 +45,17 @@ int MazeGameEngine::indexOfArrayContainingCell (const Array <Array <Cell> >& cel
     return cellArrayIndex;
 }
 
-int MazeGameEngine::getMazeWidth() const noexcept
+int GameEngine::getMazeWidth() const noexcept
 {
     return mazeWidth;
 }
 
-int MazeGameEngine::getMazeHeight() const noexcept
+int GameEngine::getMazeHeight() const noexcept
 {
     return mazeHeight;
 }
 
-void MazeGameEngine::generateMaze (int numberOfCellsX, int numberOfCellsY)
+void GameEngine::generateMaze (int numberOfCellsX, int numberOfCellsY)
 {
     mazeWidth = numberOfCellsX;
     mazeHeight = numberOfCellsY;
@@ -100,22 +100,22 @@ void MazeGameEngine::generateMaze (int numberOfCellsX, int numberOfCellsY)
     }
 }
 
-const Player& MazeGameEngine::getPlayerAtIndex (int index) const noexcept
+const Player& GameEngine::getPlayerAtIndex (int index) const noexcept
 {
     return players.getReference (index);
 }
 
-int MazeGameEngine::getNumPlayers() const noexcept
+int GameEngine::getNumPlayers() const noexcept
 {
     return players.size();
 }
 
-const Array <Edge>& MazeGameEngine::getEdges() const noexcept
+const Array <Edge>& GameEngine::getEdges() const noexcept
 {
     return edges;
 }
 
-void MazeGameEngine::setListener (MazeGameListener* listener_)
+void GameEngine::setListener (GameListener* listener_)
 {
     listener = listener_;
 }

@@ -1,24 +1,24 @@
 /*
   ==============================================================================
 
-    MazeGameEngine.h
+    GameEngine.h
     Created: 13 Dec 2014 12:30:54pm
     Author:  Luke Snape
 
   ==============================================================================
 */
 
-#ifndef MAZEGAMEENGINE_H_INCLUDED
-#define MAZEGAMEENGINE_H_INCLUDED
+#ifndef GAMEENGINE_H_INCLUDED
+#define GAMEENGINE_H_INCLUDED
 
 #include "JuceHeader.h"
 #include "Player.h"
 #include "PlayerConnectionListener.h"
 
-class MazeGameListener
+class GameListener
 {
 public:
-    virtual ~MazeGameListener()
+    virtual ~GameListener()
     {
     }
     
@@ -43,11 +43,11 @@ struct Edge
     Cell cell2;
 };
 
-class MazeGameEngine : public PlayerConnectionListener
+class GameEngine : public PlayerConnectionListener
 {
 public:
-    MazeGameEngine();
-    virtual ~MazeGameEngine() {}
+    GameEngine();
+    virtual ~GameEngine() {}
 
     void createPlayer (const String& playerName) noexcept;
     void removePlayer (const String& playerName) noexcept;
@@ -58,7 +58,7 @@ public:
     void generateMaze (int numberOfCellsX, int numberOfCellsY);
     const Array <Edge>& getEdges() const noexcept;
     
-    void setListener (MazeGameListener* listener);
+    void setListener (GameListener* listener);
     
     int getMazeWidth() const noexcept;
     int getMazeHeight() const noexcept;
@@ -72,7 +72,7 @@ private:
     Array <Edge> edges;
     Array <Player> players;
     
-    MazeGameListener* listener;
+    GameListener* listener;
 };
 
-#endif  // MAZEGAMEENGINE_H_INCLUDED
+#endif  // GAMEENGINE_H_INCLUDED

@@ -25,7 +25,7 @@
 
 #include "Player.h"
 #include "PlayerConnectionServer.h"
-#include "MazeGameEngine.h"
+#include "GameEngine.h"
 #include "MazeComponent.h"
 //[/Headers]
 
@@ -39,14 +39,14 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class MazeGameComponent  : public Component,
-                           public MazeGameListener,
-                           public ListBoxModel
+class GameComponent  : public Component,
+                       public GameListener,
+                       public ListBoxModel
 {
 public:
     //==============================================================================
-    MazeGameComponent ();
-    ~MazeGameComponent();
+    GameComponent ();
+    ~GameComponent();
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
@@ -66,7 +66,7 @@ private:
     int getNumRows();
     
     PlayerConnectionServer connectionServer;
-    MazeGameEngine gameEngine;
+    GameEngine gameEngine;
     //[/UserVariables]
 
     //==============================================================================
@@ -76,7 +76,7 @@ private:
 
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MazeGameComponent)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GameComponent)
 };
 
 //[EndFile] You can add extra defines here...

@@ -10,7 +10,7 @@
 #define MAINCOMPONENT_H_INCLUDED
 
 #include "JuceHeader.h"
-#include "MazeGameComponent.h"
+#include "GameComponent.h"
 
 //==============================================================================
 /*
@@ -31,7 +31,7 @@ private:
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)
 
-    MazeGameComponent gameComponent;
+    GameComponent gameComponent;
 };
 
 

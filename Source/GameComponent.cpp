@@ -20,14 +20,14 @@
 //[Headers] You can add your own extra header files here...
 //[/Headers]
 
-#include "MazeGameComponent.h"
+#include "GameComponent.h"
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
 //[/MiscUserDefs]
 
 //==============================================================================
-MazeGameComponent::MazeGameComponent ()
+GameComponent::GameComponent ()
 {
     addAndMakeVisible (playerListGroup = new GroupComponent ("players",
                                                              TRANS("Players")));
@@ -54,7 +54,7 @@ MazeGameComponent::MazeGameComponent ()
     //[/Constructor]
 }
 
-MazeGameComponent::~MazeGameComponent()
+GameComponent::~GameComponent()
 {
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
@@ -69,7 +69,7 @@ MazeGameComponent::~MazeGameComponent()
 }
 
 //==============================================================================
-void MazeGameComponent::paint (Graphics& g)
+void GameComponent::paint (Graphics& g)
 {
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
@@ -80,7 +80,7 @@ void MazeGameComponent::paint (Graphics& g)
     //[/UserPaint]
 }
 
-void MazeGameComponent::resized()
+void GameComponent::resized()
 {
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
@@ -95,19 +95,19 @@ void MazeGameComponent::resized()
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
-void MazeGameComponent::playerCreated (const Player& newPlayer)
+void GameComponent::playerCreated (const Player& newPlayer)
 {
     std::cout << "Player Created: " << newPlayer.name.toRawUTF8() << '\n';
 
     playerNameList->updateContent();
 }
 
-int MazeGameComponent::getNumRows()
+int GameComponent::getNumRows()
 {
     return gameEngine.getNumPlayers();
 }
 
-void MazeGameComponent::paintListBoxItem (int rowNumber,
+void GameComponent::paintListBoxItem (int rowNumber,
                                           Graphics& g,
                                           int width, int height,
                                           bool rowIsSelected)
@@ -131,8 +131,8 @@ void MazeGameComponent::paintListBoxItem (int rowNumber,
 
 BEGIN_JUCER_METADATA
 
-<JUCER_COMPONENT documentType="Component" className="MazeGameComponent" componentName=""
-                 parentClasses="public Component, public MazeGameListener, public ListBoxModel"
+<JUCER_COMPONENT documentType="Component" className="GameComponent" componentName=""
+                 parentClasses="public Component, public GameListener, public ListBoxModel"
                  constructorParams="" variableInitialisers="" snapPixels="8" snapActive="1"
                  snapShown="1" overlayOpacity="0.330" fixedSize="1" initialWidth="800"
                  initialHeight="600">
