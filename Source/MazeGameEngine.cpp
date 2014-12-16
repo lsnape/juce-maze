@@ -10,9 +10,9 @@
 
 #include "MazeGameEngine.h"
 
-MazeGameEngine::MazeGameEngine() : listener (nullptr)
+MazeGameEngine::MazeGameEngine() : mazeWidth(10), mazeHeight(10), listener (nullptr)
 {
-    generateMaze (10, 10);
+    generateMaze (mazeWidth, mazeHeight);
 }
 
 void MazeGameEngine::createPlayer (const String& playerName) noexcept
@@ -45,8 +45,21 @@ int MazeGameEngine::indexOfArrayContainingCell (const Array <Array <Cell> >& cel
     return cellArrayIndex;
 }
 
+int MazeGameEngine::getMazeWidth() const noexcept
+{
+    return mazeWidth;
+}
+
+int MazeGameEngine::getMazeHeight() const noexcept
+{
+    return mazeHeight;
+}
+
 void MazeGameEngine::generateMaze (int numberOfCellsX, int numberOfCellsY)
 {
+    mazeWidth = numberOfCellsX;
+    mazeHeight = numberOfCellsY;
+    
     Array <Array <Cell> > cellArrays;
     
     for (int i = 0; i < numberOfCellsX; ++i)

@@ -60,9 +60,14 @@ public:
     
     void setListener (MazeGameListener* listener);
     
-private:
+    int getMazeWidth() const noexcept;
+    int getMazeHeight() const noexcept;
     
+private:
     int indexOfArrayContainingCell (const Array <Array <Cell> >& cellSets, const Cell& cell) const noexcept;
+    
+    int mazeWidth,
+        mazeHeight;
     
     Array <Edge> edges;
     Array <Player> players;
