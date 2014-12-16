@@ -51,20 +51,20 @@ public:
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
     void playerCreated (const Player& newPlayer);
-    int getNumRows();
-    void paintListBoxItem (int rowNumber,
-                           Graphics& g,
-                           int width, int height,
-                           bool rowIsSelected);
     //[/UserMethods]
 
     void paint (Graphics& g);
     void resized();
 
-
-
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
+    void paintListBoxItem (int rowNumber,
+                           Graphics& g,
+                           int width, int height,
+                           bool rowIsSelected);
+    
+    int getNumRows();
+    
     PlayerConnectionServer connectionServer;
     MazeGameEngine gameEngine;
     //[/UserVariables]
