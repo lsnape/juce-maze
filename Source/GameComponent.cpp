@@ -37,7 +37,7 @@ GameComponent::GameComponent ()
     addAndMakeVisible (playerNameList = new ListBox());
     playerNameList->setName ("Player Name List");
 
-    addAndMakeVisible (mazeComponent = new MazeComponent());
+    addAndMakeVisible (mazeComponent = new MazeComponent (gameEngine));
     mazeComponent->setName ("Maze Component");
 
 
@@ -146,7 +146,7 @@ BEGIN_JUCER_METADATA
                     class="ListBox" params=""/>
   <GENERICCOMPONENT name="Maze Component" id="b10a398557cac1f6" memberName="mazeComponent"
                     virtualName="" explicitFocusOrder="0" pos="1.5% 4% 460 460" class="MazeComponent"
-                    params=""/>
+                    params="gameEngine"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

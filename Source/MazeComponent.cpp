@@ -12,35 +12,43 @@
 #include "MazeComponent.h"
 
 //==============================================================================
-MazeComponent::MazeComponent()
+MazeComponent::MazeComponent (const GameEngine& gameModel_) : gameModel (gameModel_)
 {
-    // In your constructor, you should add any child components, and
-    // initialise any special settings that your component needs.
-
 }
 
 MazeComponent::~MazeComponent()
 {
 }
 
+void MazeComponent::paintEdge (const Graphics& g, const Edge& edgeToPaint)
+{
+}
+
 void MazeComponent::paint (Graphics& g)
 {
-    /* This demo code just fills the component's background and
-       draws some placeholder text to get you started.
-
-       You should replace everything in this method with your own
-       drawing code..
-    */
-
     g.fillAll (Colours::white);   // clear the background
-
+    
     g.setColour (Colours::grey);
     g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
 
     g.setColour (Colours::lightblue);
-    g.setFont (14.0f);
-    g.drawText ("MazeComponent", getLocalBounds(),
-                Justification::centred, true);   // draw some placeholder text
+    
+    int mazeWidth = gameModel.getMazeWidth(),
+        mazeHeight = gameModel.getMazeHeight();
+    
+    // for now...
+    assert (mazeWidth == mazeHeight);
+        
+    for (auto& edge : gameModel.getEdges())
+    {
+        int xOffset = cellDimensions + (edge.cell1.x * (cellDimensions + 1)),
+            yOffset = cellDimensions + (edge.cell1.y * (cellDimensions + 1));
+        
+        g.fillRect (Rectangle <int> (xOffset,
+                                     yOffset,
+                                     cellDimensions + ((cellDimensions + 1) * edge.cell2.x) == xOffset ? edgeDimensions : cellDimensions + (edgeDimensions + 1),
+                                     cellDimensions + ((cellDimensions + 1) * edge.cell2.y) == yOffset ? edgeDimensions : cellDimensions + (edgeDimensions + 1)));
+    }
 }
 
 void MazeComponent::resized()
