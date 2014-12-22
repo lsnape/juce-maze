@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="d6BI5l" name="JuceMaze" projectType="guiapp" version="1.0.0"
               bundleIdentifier="com.lsnape.JuceMaze" includeBinaryInAppConfig="1"
-              jucerVersion="3.1.0" companyEmail="ldjsnape@gmail.com" companyName="Luke Snape">
+              jucerVersion="3.1.1" companyEmail="ldjsnape@gmail.com" companyName="Luke Snape">
   <MAINGROUP id="ch3GHW" name="JuceMaze">
     <GROUP id="{D59D6866-346A-A74F-C1D7-D7561846611A}" name="Source">
       <GROUP id="{69BBFA4F-3442-6280-0A31-F6E624DC2971}" name="Conn">
